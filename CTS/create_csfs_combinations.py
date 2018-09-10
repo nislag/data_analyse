@@ -8,7 +8,7 @@ class class_df_check():
     def __init__(self):
         self.csf_missed = 0
         self.comb_num = 0
-        self.min_size_combinations = 4
+        self.min_size_combinations = 1
         self.max_size_combinations = 7
         self.result_dict = {
             'size_combination': [],
