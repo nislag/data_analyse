@@ -1,6 +1,6 @@
 import pandas as pd
 
-df_all = pd.DataFrame.from_csv('extract-atomic.csv', index_col=None)
+df_all = pd.DataFrame.from_csv('9_12_CompleteJoinedData.csv', index_col=None)
 
 # print(df_all)
 df_all.fillna(0, inplace=True)
@@ -12,6 +12,7 @@ data_dict = dict()
 #         print(col)
 
 drop_col = [
+'Unnamed: 0',
 'ID',
 'ISDELETED',
 'NAME',
@@ -24,6 +25,13 @@ drop_col = [
 'SPO4__OPPORTUNITY_PLAYBOOK__C',
 'SPO4__PERCENT__C',
 'SPO4__SPOOPPORTUNITY__C',
+'Deal_Size__c',
+'Account_Tagging__c',
+'Practice_Area__c,'
+'Vertical__c',
+'Status__c',
+'Type',
+
 ]
 
 # "OPPORTUNITY_CLOSED__C","OPPORTUNITY_WON__C"
@@ -77,14 +85,14 @@ df_update.OPPORTUNITY_WON__C.replace([True, False], ['Won', 'Lost'], inplace=Tru
 
 
 df_update_50000 = df_update[:50000]
-df_update_50000.to_csv('SPO_UP_50000.csv', sep='\t', index=False)
+df_update_50000.to_csv('9_12\SPO_9_12_UP_50000.csv', sep='\t', index=False)
 
-df_update.to_csv('SPO_UPDATED.csv', sep='\t', index=False)
+df_update.to_csv('9_12\SPO_9_12_UPDATED.csv', sep='\t', index=False)
 
 df_update = df_update[df_update['SPO4__COLOR__C'] !='grey']
 print('removed Grey ',len(df_update))
 
-df_update.to_csv('SPO_UPDATED_WITHOUT_GREY.csv', sep='\t', index=False)
+df_update.to_csv('9_12\SPO_9_12_UPDATED_WITHOUT_GREY.csv', sep='\t', index=False)
 # df_500_part = pd.DataFrame()
 # for i in range(len(df_update)):
 #     if (i%500)==0:
